@@ -1,0 +1,9 @@
+.header {
+  &__container {
+    margin-bottom: calc(40/15)+rem;
+  }
+  &__title {
+    // font-size: 48px;
+    font-size: calc(48/15)+rem;
+  }
+}

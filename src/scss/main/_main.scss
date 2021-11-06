@@ -1,0 +1,10 @@
+.main {
+  &__container {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@import 'creation/creation';
+@import 'backlog/backlog';

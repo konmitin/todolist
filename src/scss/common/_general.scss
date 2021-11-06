@@ -1,21 +1,30 @@
 * {
-    font-family: $base-ff, sans-serif;
-    font-size: $base-fsz;
-    font-weight: $base-fw;
-    color: $base-c;
+  font-family: $base-ff, sans-serif;
+  font-size: $base-fsz;
+  font-weight: $base-fw;
+  color: $base-c;
 }
 
 body {
-    background: #352B2B;
+  padding: 50px 0;
+  background: #352B2B;
 }
 
 .container {
-    max-width:  $base-w-container;
-    margin: 0 auto;
+  max-width:  $base-w-container;
+  margin: 0 auto;
 }
 
 .button {}
-
+.title {
+  &_h3 {
+    font-size: calc(24/15)+rem;
+  }
+}
 .wrapper {
-    width: 100%;
+  max-width:  $base-w-container;
+  min-height: 840px;
+  margin: 0 auto;
+  padding: 50px;
+  background: #FFEAEA;
 }
