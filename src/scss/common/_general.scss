@@ -1,0 +1,21 @@
+* {
+    font-family: $base-ff, sans-serif;
+    font-size: $base-fsz;
+    font-weight: $base-fw;
+    color: $base-c;
+}
+
+body {
+    background: #352B2B;
+}
+
+.container {
+    max-width:  $base-w-container;
+    margin: 0 auto;
+}
+
+.button {}
+
+.wrapper {
+    width: 100%;
+}
