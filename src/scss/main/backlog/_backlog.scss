@@ -1,5 +1,5 @@
 .backlog {
-  background: #B58A8A;
+  background: #b58a8a;
   padding: 0.9rem;
   min-width: 510px;
   min-height: 615px;
@@ -12,6 +12,7 @@
     display: -webkit-flex;
     display: -ms-flex;
     display: flex;
+    align-items: center;
     flex-direction: column;
   }
   &__header {
@@ -20,7 +21,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 0 25px 0 ;
+    margin: 0 0 25px 0;
+    width: 100%;
   }
   &__list {
     display: -webkit-flex;
@@ -29,6 +31,7 @@
     flex-direction: column;
     gap: 10px;
     flex: 1 0 auto;
+    width: 100%;
   }
   &__item {
     user-select: none;
@@ -37,14 +40,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #B58A8A;
+    background: #b58a8a;
     padding: 7.5px;
     border-radius: 5px;
-    border: 1px solid #53C09F;
+    border: 1px solid #53c09f;
     cursor: pointer;
   }
   ._bad {
-    border-color: #CD2828;
+    border-color: #cd2828;
   }
   &__left {
     display: -webkit-flex;
@@ -64,7 +67,7 @@
     cursor: pointer;
   }
   &__psevdo::after {
-    content: '';
+    content: "";
     visibility: hidden;
     position: absolute;
     top: 50%;
@@ -76,7 +79,7 @@
     height: 15px;
   }
   &__psevdo::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -95,6 +98,7 @@
     visibility: visible;
   }
   &__description {
+    font-family: "Courier New", Courier, monospace;
     color: #fff;
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   }
@@ -106,12 +110,15 @@
     gap: 10px;
   }
   .date-box {
-    &__date, &__time {
+    &__date,
+    &__time {
+      font-family: "Courier New", Courier, monospace;
       color: #fff;
       text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     }
   }
   &__more {
+    width: 30px;
     background: none;
     letter-spacing: 0.35em;
   }
