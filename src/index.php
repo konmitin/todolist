@@ -1,3 +1,9 @@
+<?php 
+
+include_once("php/db.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,11 +31,11 @@
       <main class="main">
         <div class="main__container container">
           <div class="creation main__creation">
-            <form class="creation__form creation-form" action="#" method="post">
+            <form data-form= "addToDo" class="creation__form creation-form" action="php/addtodo.php" method="post">
               <div class="creation-form__item">
                 <h3 class="creation-form__title title_h3">What to do</h3>
                 <div class="creation-form__input-box">
-                  <input type="text" class="creation-form__input" />
+                  <input name="name" type="text" class="creation-form__input" />
                 </div>
               </div>
               <div class="creation-form__item">
@@ -39,7 +45,7 @@
                   <input
                     type="date"
                     id="dateForToDo"
-                    name="dateForToDo"
+                    name="enddate"
                     class="creation-form__input"
                   />
                 </div>
@@ -60,44 +66,14 @@
             </form>
           </div>
           <div class="backlog main__backlog">
-            <div class="backlog__box">
-              <div class="backlog__header">
-                <h3 class="backlog__title title_h3">Backlog</h3>
-                <p class="backlog__check title_h3">0</p>
-              </div>
-              <div class="backlog__list">
-                <div class="backlog__item">
-                  <div class="backlog__left">
-                    <label class="backlog__label">
-                      <input type="checkbox" class="backlog__checkbox" />
-                      <span class="backlog__psevdo"></span>
-                    </label>
-                    <p class="backlog__description">To wash the dishes</p>
-                  </div>
-                  <div class="backlog__date-box date-box">
-                    <p class="date-box__date">24.10.2021</p>
-                    <p class="date-box__time">15:00</p>
-                  </div>
-                </div>
-                <div class="backlog__item _bad">
-                  <div class="backlog__left">
-                    <label class="backlog__label">
-                      <input type="checkbox" class="backlog__checkbox" />
-                      <span class="backlog__psevdo"></span>
-                    </label>
-                    <p class="backlog__description">To wash the dishes</p>
-                  </div>
-                  <div class="backlog__date-box date-box">
-                    <p class="date-box__date">24.10.2021</p>
-                    <p class="date-box__time">15:00</p>
-                  </div>
-                </div>
-              </div>
-              <button class="backlog__more">...</button>
-            </div>
+            <?php include_once("php/listload.php"); ?>
           </div>
         </div>
       </main>
     </div>
   </body>
+
+  <script src="js/main.min.js"></script>
 </html>
+
+
