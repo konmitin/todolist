@@ -26,26 +26,36 @@ $backlog_item = <<<ITEM
 ITEM;
 ?>
 
-<?php for($i=0; $i < $count_backlog; $i++): ?>
-    <div class="backlog__item">
-        <label class="backlog__label">
-            <input 
-            type="checkbox" 
-            class="backlog__checkbox"
-            <?php if($status = $backlog[$i]['status']) {
-                    echo "checked";
-                }
-            ?>
-            />
-            <span class="backlog__psevdo"></span>
-        </label>
-        <div class="backlog__desc-block">
-            <p class="backlog__description"><?= $name = (string)$backlog[$i]['name'];?></p>
-        </div>
-        <div class="backlog__date-box date-box">
-            <p class="date-box__date"><?= $enddate = $backlog[$i]['enddate'];?></p>
-        </div>
-        <button class="backlog__delete" type="button"></button>
+<div class="backlog__box">
+    <div class="backlog__header">
+        <h3 class="backlog__title title_h3">Backlog</h3>
+        <p class="backlog__check title_h3"><?php echo $count_backlog; ?></p>
     </div>
-<?php endfor; ?>
+    <div class="backlog__list">
+        <?php for($i=0; $i < $count_backlog; $i++): ?>
+            <div class="backlog__item">
+                <label class="backlog__label">
+                    <input 
+                    type="checkbox" 
+                    class="backlog__checkbox"
+                    <?php if($status = $backlog[$i]['status']) {
+                            echo "checked";
+                        }
+                    ?>
+                    />
+                    <span class="backlog__psevdo"></span>
+                </label>
+                <div class="backlog__desc-block">
+                    <p class="backlog__description"><?= $name = (string)$backlog[$i]['name'];?></p>
+                </div>
+                <div class="backlog__date-box date-box">
+                    <p class="date-box__date"><?= $enddate = $backlog[$i]['enddate'];?></p>
+                </div>
+                <button class="backlog__delete" type="button"></button>
+            </div>
+        <?php endfor; ?>
+    </div>
+    <button class="backlog__more">...</button>
+</div>
+
     

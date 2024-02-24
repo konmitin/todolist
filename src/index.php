@@ -66,16 +66,7 @@ include_once("php/db.php");
             </form>
           </div>
           <div class="backlog main__backlog">
-            <div class="backlog__box">
-              <div class="backlog__header">
-                <h3 class="backlog__title title_h3">Backlog</h3>
-                <p class="backlog__check title_h3"><?php echo $count_backlog; ?></p>
-              </div>
-              <div class="backlog__list">
-                <?php include_once("php/listload.php"); ?>
-              </div>
-              <button class="backlog__more">...</button>
-            </div>
+              <?php include_once("php/listload.php"); ?>
           </div>
         </div>
       </main>
