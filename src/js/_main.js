@@ -1,5 +1,11 @@
 const addToDoForm = document.querySelector("[data-form='addToDo']");
 const deleteTaskBtn = document.querySelectorAll("[data-type='deleteTask']");
+const cancelBtn = document.querySelector("[data-type='cancelBtn']");
+
+cancelBtn.addEventListener("click", (event) => {
+  const form = event.target.closest("form");
+  form.reset();
+});
 
 addToDoForm.addEventListener("submit", (event) => {
   event.preventDefault();

@@ -59,6 +59,7 @@ include_once("php/db.php");
                 ><button
                   class="creation-form__button creation-form__button-cancel"
                   type="button"
+                  data-type="cancelBtn"
                 >
                   cancel
                 </button>
