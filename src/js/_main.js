@@ -1,11 +1,19 @@
 const addToDoForm = document.querySelector("[data-form='addToDo']");
-const text = document.querySelector(".backlog__description");
-console.log(typeof text.textContent);
+const deleteTaskBtn = document.querySelectorAll("[data-type='deleteTask']");
 
 addToDoForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   addToDo(event.target);
+});
+
+deleteTaskBtn.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    const task = event.target.closest(".backlog__item");
+    const taskId = task.getAttribute("data-id");
+
+    deleteToDo(taskId);
+  });
 });
 
 async function addToDo(form) {
@@ -22,5 +30,22 @@ async function addToDo(form) {
 
   setTimeout(function () {
     window.location.reload();
-  }, 1000);
+  }, 500);
+}
+
+async function deleteToDo(id) {
+  if (!confirm("Вы уверены?")) {
+    return;
+  }
+
+  const data = "id=" + id;
+  let response = await fetch("../php/deltodo.php", {
+    method: "POST",
+    body: data,
+    headers: { "content-type": "application/x-www-form-urlencoded" },
+  });
+
+  setTimeout(function () {
+    window.location.reload();
+  }, 500);
 }

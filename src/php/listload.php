@@ -33,7 +33,7 @@ ITEM;
     </div>
     <div class="backlog__list">
         <?php for($i=0; $i < $count_backlog; $i++): ?>
-            <div class="backlog__item">
+            <div class="backlog__item" data-id="<?=$id = $backlog[$i]['id'];?>">
                 <label class="backlog__label">
                     <input 
                     type="checkbox" 
@@ -51,7 +51,7 @@ ITEM;
                 <div class="backlog__date-box date-box">
                     <p class="date-box__date"><?= $enddate = $backlog[$i]['enddate'];?></p>
                 </div>
-                <button class="backlog__delete" type="button"></button>
+                <button class="backlog__delete" type="button" data-type="deleteTask"></button>
             </div>
         <?php endfor; ?>
     </div>
