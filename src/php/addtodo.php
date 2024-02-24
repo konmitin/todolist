@@ -1,7 +1,20 @@
 <?php 
 require("db.php");
 
-$id = 1;
+function getId($connection) {
+    $id_out = rand(0, 5000);
+
+    $id_req = "SELECT id FROM todo";
+    $id_in_db = (int)$connection->query($id_req);
+
+    if($id_out == $id_in_db) {
+        return getId();
+    } else {
+        return $id_out;
+    }
+}
+
+$id = getId($connection);
 $status = 0;
 $name = $_POST['name'];
 $enddate = $_POST['enddate'];
