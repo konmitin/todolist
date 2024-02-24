@@ -12,4 +12,5 @@ $stmt = $connection->prepare($sql_add_todo); //Подготавливаем  з�
 $stmt ->bind_param("issi", $id, $name, $enddate, $status); //Привязываем переменные к подготовленному запросу
 $stmt->execute(); //Выполняем запрос
 
+echo json_encode($stmt);
 ?>

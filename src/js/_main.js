@@ -1,4 +1,6 @@
 const addToDoForm = document.querySelector("[data-form='addToDo']");
+const text = document.querySelector(".backlog__description");
+console.log(typeof text.textContent);
 
 addToDoForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -17,5 +19,8 @@ async function addToDo(form) {
   form.reset();
 
   let result = await response.json();
-  console.log(result);
+
+  setTimeout(function () {
+    window.location.reload();
+  }, 1000);
 }

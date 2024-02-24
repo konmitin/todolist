@@ -1,7 +1,7 @@
 .backlog {
   background: #b58a8a;
   padding: 0.9rem;
-  min-width: 510px;
+  min-width: 560px;
   min-height: 615px;
   border-radius: 5px;
   &__box {
@@ -34,17 +34,20 @@
     width: 100%;
   }
   &__item {
-    user-select: none;
     display: -webkit-flex;
     display: -ms-flex;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
+    gap: 15px;
     background: #b58a8a;
-    padding: 7.5px;
+    padding: 10px;
     border-radius: 5px;
+    max-width: 550px;
+    overflow: hidden;
+  }
+  ._succesful {
     border: 1px solid #53c09f;
-    cursor: pointer;
   }
   ._bad {
     border-color: #cd2828;
@@ -76,6 +79,7 @@
     background: #fff;
     border-radius: 50%;
     width: 15px;
+    cursor: pointer;
     height: 15px;
   }
   &__psevdo::before {
@@ -97,16 +101,28 @@
   &__checkbox:checked + &__psevdo::after {
     visibility: visible;
   }
+  &__desc-block {
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 1;
+  }
   &__description {
     font-family: "Courier New", Courier, monospace;
     color: #fff;
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+    user-select: text;
+    width: 290px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   &__date-box {
     display: -webkit-flex;
     display: -ms-flex;
     display: flex;
     align-items: center;
+    flex-shrink: 0;
     gap: 10px;
   }
   .date-box {
@@ -116,6 +132,14 @@
       color: #fff;
       text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     }
+  }
+  &__delete {
+    color: #e80000;
+    border: 1px solid #e80000;
+    background: #e80000;
+    padding: 2px 6px;
+    margin-bottom: 1px;
+    height: 2px;
   }
   &__more {
     width: 30px;
