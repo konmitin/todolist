@@ -23,6 +23,13 @@ deleteTaskBtn.forEach((btn) => {
 });
 
 async function addToDo(form) {
+  if (!validateForm(form)) {
+    alert(
+      "Заполните корректно форму:\nНазвание задачи должно быть заполнено и содержать не более 50 символов \nДата должна быть заполнена"
+    );
+    return;
+  }
+
   let formData = new FormData(form);
 
   let response = await fetch("../php/addtodo.php", {
@@ -54,4 +61,20 @@ async function deleteToDo(id) {
   setTimeout(function () {
     window.location.reload();
   }, 500);
+}
+
+function validateForm(form) {
+  let error = 0;
+
+  if (!form.enddate.value) {
+    error++;
+  } else if (!form.name.value || !form.name.value.length < 10) {
+    error++;
+  }
+
+  if (error > 0) {
+    return false;
+  } else {
+    return true;
+  }
 }
