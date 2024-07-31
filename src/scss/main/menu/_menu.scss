@@ -1,0 +1,28 @@
+.menu {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  &__item {
+  }
+  &__item-link {
+    display: flex;
+    padding: 0px 10px;
+    width: 100%;
+    color: $white;
+    font-family: $base-ff;
+    font-size: 24px;
+    transition: all 0.3s;
+  }
+
+  &__item-link._active {
+    color: $hover;
+    border-left: 1px solid $hover;
+  }
+
+  &__item-link:hover {
+    color: $hover;
+    border-left: 1px solid $hover;
+  }
+}

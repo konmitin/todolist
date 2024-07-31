@@ -1,9 +1,29 @@
 .header {
+  padding: 30px 0;
+  width: 100%;
+  background: $base-c;
   &__container {
-    margin-bottom: calc(40/15)+rem;
+    padding-left: 45px;
+    padding-right: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   &__title {
-    // font-size: 48px;
-    font-size: calc(48/15)+rem;
+    color: #ffffff;
+    font-size: 36px;
+  }
+  &__auth-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &__auth {
+    color: #ffffff;
+    font-size: 22px;
+    transition: all 0.3s;
+  }
+  &__auth:hover {
+    color: $hover;
   }
 }
