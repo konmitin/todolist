@@ -1,14 +1,15 @@
 .backlog {
-  background: #b58a8a;
-  padding: 0.9rem;
+  background: #2f2f2f;
+  padding: 2px;
   min-width: 560px;
   min-height: 615px;
+  height: 100%;
   border-radius: 5px;
   &__box {
     background: #fff;
     padding: 25px;
-    border-radius: 5px;
     height: 100%;
+    border-radius: 5px;
     display: -webkit-flex;
     display: -ms-flex;
     display: flex;
@@ -101,6 +102,7 @@
   &__checkbox:checked + &__psevdo::after {
     visibility: visible;
   }
+
   &__desc-block {
     display: flex;
     flex-shrink: 0;

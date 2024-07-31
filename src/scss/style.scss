@@ -1,10 +1,9 @@
 /*------------ИМПОРТ------------*/
 
-@import 'common/variable'; //--ПЕРЕМЕННЫЕ
-@import 'common/general'; //---ОСНОВНЫЕ СТИЛЕЙ
-@import 'common/reset'; //-----ОБНУЛЯЮЩИЕ СТИЛЕЙ
+@import "common/variable"; //--ПЕРЕМЕННЫЕ
+@import "common/general"; //---ОСНОВНЫЕ СТИЛЕЙ
+@import "common/reset"; //-----ОБНУЛЯЮЩИЕ СТИЛЕЙ
 @import "common/fonts"; //-----ШРИФТЫ
-
 
 /*------------Source------------*/
 
@@ -20,3 +19,5 @@
 
 // @import "footer";
 /*------------------------------*/
+
+@import "auth/auth-form";
