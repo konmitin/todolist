@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once($_SERVER['DOCUMENT_ROOT'] . "/source/classes/user.php");
 
 $input = json_decode(file_get_contents('php://input'));
@@ -15,5 +17,10 @@ if(!empty($input->login) && !empty($input->password)) {
 }
 
 $res = User::login($login, $password);
+
+if($res['status'] == 1) {
+    $_SESSION['login'] = $login;
+    $_SESSION['last_login'] = date('Y-m-d H:s:i');
+}
 
 echo json_encode($res);

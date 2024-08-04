@@ -3,11 +3,10 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/source/db.php");
 
 class User {
-    public $id = "";
-    
-    public $name = "";
-    public $login = "";
-    public $password = "";
+    protected $id = "";
+    protected $name = "";
+    protected $login = "";
+    protected $password = "";
 
     public function __construct() {
 
@@ -53,6 +52,7 @@ class User {
 
         $out['status'] = 0;
         $out['message'] = "Ошибка входа. Что-то пошло не так!";
+        $out['login'] = $login;
 
         $checkLogin_q = "SELECT * FROM `users` WHERE `users`.`login` = ?";
 

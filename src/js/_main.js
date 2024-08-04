@@ -101,52 +101,58 @@ function validateForm(form) {
 //==== Вход/Регистрация ====
 const authForm = document.querySelector(".auth-form");
 const loginLink = document.querySelector("[data-type=login]");
+const logoutLink = document.querySelector("[data-type=logout]");
 const regLink = document.querySelector("[data-type=reg]");
 
-loginLink.addEventListener("click", (event) => {
-  event.preventDefault();
-  authForm.classList.add("active");
+if (loginLink) {
+  loginLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    authForm.classList.add("active");
 
-  const authFormActiveTab = authForm.querySelector(".tab__link.active");
-  const authFormTabs = authForm.querySelectorAll(".tab__link");
-  const tabContent = authForm.querySelector(".tab-content");
+    const authFormActiveTab = authForm.querySelector(".tab__link.active");
+    const authFormTabs = authForm.querySelectorAll(".tab__link");
+    const tabContent = authForm.querySelector(".tab-content");
 
-  authFormActiveTab.classList.remove("active");
+    authFormActiveTab.classList.remove("active");
 
-  authFormTabs.forEach((tab) => {
-    if (tab.getAttribute("href") == "#login") {
-      tab.classList.add("active");
+    authFormTabs.forEach((tab) => {
+      if (tab.getAttribute("href") == "#login") {
+        tab.classList.add("active");
 
-      const login = tabContent.querySelector("#login");
-      const reg = tabContent.querySelector("#signup");
+        const login = tabContent.querySelector("#login");
+        const reg = tabContent.querySelector("#signup");
 
-      login.classList.add("active");
-      reg.classList.remove("active");
-    }
+        login.classList.add("active");
+        reg.classList.remove("active");
+      }
+    });
   });
-});
-regLink.addEventListener("click", (event) => {
-  event.preventDefault();
-  authForm.classList.add("active");
+}
 
-  const authFormActiveTab = authForm.querySelector(".tab__link.active");
-  const authFormTabs = authForm.querySelectorAll(".tab__link");
-  const tabContent = authForm.querySelector(".tab-content");
+if (regLink) {
+  regLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    authForm.classList.add("active");
 
-  authFormActiveTab.classList.remove("active");
+    const authFormActiveTab = authForm.querySelector(".tab__link.active");
+    const authFormTabs = authForm.querySelectorAll(".tab__link");
+    const tabContent = authForm.querySelector(".tab-content");
 
-  authFormTabs.forEach((tab) => {
-    if (tab.getAttribute("href") == "#signup") {
-      tab.classList.add("active");
+    authFormActiveTab.classList.remove("active");
 
-      const login = tabContent.querySelector("#login");
-      const reg = tabContent.querySelector("#signup");
+    authFormTabs.forEach((tab) => {
+      if (tab.getAttribute("href") == "#signup") {
+        tab.classList.add("active");
 
-      login.classList.remove("active");
-      reg.classList.add("active");
-    }
+        const login = tabContent.querySelector("#login");
+        const reg = tabContent.querySelector("#signup");
+
+        login.classList.remove("active");
+        reg.classList.add("active");
+      }
+    });
   });
-});
+}
 
 //==== Вход/Регистрация - отправка данных ====
 
@@ -205,6 +211,30 @@ async function loginUser(form) {
     let result = await response.json();
 
     alert(result.message);
+
+    location.reload();
+  }
+}
+if (logoutLink) {
+  logoutLink.addEventListener("click", (event) => {
+    logoutUser();
+  });
+}
+async function logoutUser() {
+  const logoutData = {};
+
+  logoutData.status = "out";
+
+  let response = await fetch("./controllers/logout.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify(logoutData),
+  });
+
+  if (response.ok) {
+    let result = await response.json();
 
     location.reload();
   }
