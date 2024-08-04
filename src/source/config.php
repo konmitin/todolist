@@ -7,4 +7,6 @@ $DB_PASS = "";
 $DB_NAME = "todolist";
 $DB_CHARSET  = 'utf8mb4';
 
+define("DOMAIN", "http://192.168.1.105:3000");
+
 
