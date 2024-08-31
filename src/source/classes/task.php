@@ -111,7 +111,7 @@ class Task
             return false;
         } 
 
-        $q = "delete from tasks where id = ?";
+        $q = "DELETE FROM tasks WHERE id = ?";
         $stmt = $DB->prepare($q);
         $stmt->bind_param('s', $id);
         $stmt->execute();

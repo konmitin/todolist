@@ -6,8 +6,6 @@ function addTaskEvent() {
   if (formTask) {
     formTask.addEventListener("click", () => {
       createTodo.classList.add("active");
-
-      console.log(formTask);
     });
   }
 
@@ -18,19 +16,7 @@ function addTaskEvent() {
       }
     });
 
-    createTodo.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      let form = event.target;
-      let title = form.title.value;
-      let enddate = form.enddate.value;
-
-      if (title && enddate) {
-        addTodo(title, enddate);
-      } else {
-        alert("Ошибка создания. Заполните все поля!");
-      }
-    });
+    createTodo.addEventListener("submit", createTodoEvent);
   }
 
   tasks.forEach((task) => {
@@ -93,6 +79,20 @@ async function deleteTask(id, task) {
     } else {
       alert(result.message);
     }
+  }
+}
+
+function createTodoEvent(event) {
+  event.preventDefault();
+
+  let form = event.target;
+  let title = form.title.value;
+  let enddate = form.enddate.value;
+
+  if (title && enddate) {
+    addTodo(title, enddate);
+  } else {
+    alert("Ошибка создания. Заполните все поля!");
   }
 }
 
