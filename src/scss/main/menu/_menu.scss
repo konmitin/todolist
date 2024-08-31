@@ -1,8 +1,13 @@
 .menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   &__list {
     display: flex;
     flex-direction: column;
     gap: 18px;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 20px;
   }
   &__item {
   }

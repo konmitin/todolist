@@ -1,12 +1,14 @@
 <?php 
-require("../source/classes.php");
-require("../source/db.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/source/classes.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/source/db.php");
 
-$name = $_POST['name'];
+$title = $_POST['name'];
 $enddate = $_POST['enddate'];
 
-Todo::add($DB, $name, $enddate);
+$todo = new Task($title, $enddate, 0);
+$todo->add();
 
 
-$message = "200";
-echo json_encode($message);
+$out['status'] = "200";
+$out['message'] = "Задача успешно добавлена!";
+echo json_encode($out);

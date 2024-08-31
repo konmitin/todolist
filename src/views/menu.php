@@ -33,4 +33,14 @@
       </a>
     </li>
   </ul>
+  <ul class="menu__list">
+    <li class="menu__item">
+      <button
+        data-type="formTask" 
+        class="menu__item-link menu__item-btn"
+      >
+        Добавить задачу
+      </button>
+    </li>
+  </ul>
 </div>

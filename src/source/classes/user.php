@@ -1,7 +1,5 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'] . "/source/db.php");
-
 class User {
     protected $id = "";
     protected $name = "";
@@ -51,11 +49,11 @@ class User {
         global $DB;
 
         $out['status'] = 0;
-        $out['message'] = "Ошибка входа. Что-то пошло не так!";
+        $out['message'] = "Ошибка входа. Неверный логин или пароль!";
         $out['login'] = $login;
 
         $checkLogin_q = "SELECT * FROM `users` WHERE `users`.`login` = ?";
-
+        
         $stmt = $DB->prepare($checkLogin_q);
         $stmt->bind_param("s", $login);
         $stmt->execute();

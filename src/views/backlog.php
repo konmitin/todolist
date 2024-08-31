@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$backlog = Todo::get($DB);
+$backlog = Task::getList();
 
 ?>
 
@@ -14,7 +14,7 @@ $backlog = Todo::get($DB);
         </div>
         <div class="backlog__list">
             <?php foreach($backlog as $todo): ?>
-                <div class="backlog__item <?php if($todo->getStatus()) echo '_succesful'?>"
+                <div class="backlog__item <?php if($todo->getStatus() == '1') echo '_succesful'?>"
                     data-id="<?=$id = $todo->getId()?>"
                 >
                     <label class="backlog__label">
@@ -29,10 +29,10 @@ $backlog = Todo::get($DB);
                         <span class="backlog__psevdo"></span>
                     </label>
                     <div class="backlog__desc-block">
-                        <p class="backlog__description"><?= $name = (string)$todo->getName();?></p>
+                        <p class="backlog__description"><?= $name = (string)$todo->getTitle();?></p>
                     </div>
                     <div class="backlog__date-box date-box">
-                        <p class="date-box__date"><?= $enddate = $todo->getEnddate();?></p>
+                        <p class="date-box__date"><?= $enddate = $todo->getEndDate();?></p>
                     </div>
                     <button class="backlog__delete" type="button" data-type="deleteTask"></button>
                 </div>

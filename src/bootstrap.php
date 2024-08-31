@@ -1,5 +1,5 @@
 <?php 
 
-require("source/classes.php");
 require("source/config.php");
-require("php/db.php");
+require("source/db.php");
+require("source/classes.php");

@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once($_SERVER['DOCUMENT_ROOT'] . "/source/classes/user.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/source/classes.php");
 
 $input = json_decode(file_get_contents('php://input'));
 
