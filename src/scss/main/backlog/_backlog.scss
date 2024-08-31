@@ -43,10 +43,10 @@
     overflow: hidden;
   }
   ._succesful {
-    border: 1px solid #53c09f;
+    background: #53c09f;
   }
-  ._bad {
-    border-color: #cd2828;
+  ._failed {
+    background: rgb(255, 119, 119);
   }
   &__left {
     display: flex;

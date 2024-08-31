@@ -2,7 +2,9 @@
 session_start();
 
 $userID = $_SESSION['user_id'];
-$backlog = Task::getList($userID);
+// $lastSort = $_SESSION['last_sort'];
+$lastSort = "";
+$backlog = Task::getList($userID, $lastSort);
 
 ?>
 
@@ -10,12 +12,12 @@ $backlog = Task::getList($userID);
 <div class="backlog main__backlog">
     <div class="backlog__box">
         <div class="backlog__header">
-            <h3 class="backlog__title title_h3">Backlog</h3>
+            <h3 class="backlog__title title_h3">Задачи</h3>
             <p class="backlog__check title_h3"><?= count($backlog) ?></p>
         </div>
         <div class="backlog__list">
             <?php foreach($backlog as $todo): ?>
-                <div class="backlog__item <?php if($todo->getStatus() == '1') echo '_succesful'?>"
+                <div class="backlog__item <?php if($todo->getStatus() == '1'){echo '_succesful';} else if($todo->getStatus() == '2') { echo '_failed';} ?>"
                     data-id="<?=$id = $todo->getId()?>"
                 >
                     <label class="backlog__label">

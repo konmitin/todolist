@@ -64,12 +64,24 @@ class Task
 
         return true;
     }
-    public static function getList($userID): array
+    public static function getList($userID, $sort = ""): array
     {
         global $DB;
+        $where = "";
+
+        if (!empty($sort)) {
+            if ($sort == "active") {
+                $where = "AND status = '0'";
+            } else if($sort == "success") {
+                $where = "AND status = '1'";
+            } else if($sort == "fail") {
+                $where = "AND status = '2'";
+            }
+        }
 
         $list_todo = array();
-        $q = "SELECT * FROM tasks WHERE user_id = $userID ORDER BY status";
+        $q = "SELECT * FROM tasks WHERE user_id = $userID ";
+        $q .= $where . "ORDER BY status";
         $stmt = $DB->query($q);
         $list = $stmt->fetch_all(MYSQLI_ASSOC);
 

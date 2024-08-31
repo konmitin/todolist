@@ -1,34 +1,34 @@
 <div class="menu">
   <ul class="menu__list">
     <li class="menu__item">
-      <a 
-        href="all.php" 
-        class="menu__item-link <?php if($_SERVER['REQUEST_URI'] == "/") {echo "_active";}?>"
-      >
+      <a
+        data-sort="all"
+        href="#"
+        class="menu__item-link _active">
         Все задачи
       </a>
     </li>
     <li class="menu__item">
-      <a 
-        href="#" 
-        class="menu__item-link <?php if($_SERVER['REQUEST_URI'] == "/active.php") {echo "_active";}?>"
-      >
+      <a
+        data-sort="active"
+        href="#"
+        class="menu__item-link">
         Активные
       </a>
     </li>
     <li class="menu__item">
-      <a 
-        href="#" 
-        class="menu__item-link <?php if($_SERVER['REQUEST_URI'] == "/succesful.php") {echo "_active";}?>"
-      >
+      <a
+        data-sort="success"
+        href="#"
+        class="menu__item-link">
         Выполненные
       </a>
     </li>
     <li class="menu__item">
-      <a 
-        href="#" 
-        class="menu__item-link <?php if($_SERVER['REQUEST_URI'] == "/failed.php") {echo "_active";}?>"
-      >
+      <a
+        data-sort="fail"
+        href="#"
+        class="menu__item-link">
         Просроченные
       </a>
     </li>
@@ -36,9 +36,8 @@
   <ul class="menu__list">
     <li class="menu__item">
       <button
-        data-type="formTask" 
-        class="menu__item-link menu__item-btn"
-      >
+        data-type="formTask"
+        class="menu__item-link menu__item-btn">
         Добавить задачу
       </button>
     </li>
