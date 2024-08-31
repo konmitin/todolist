@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <div class="menu">
   <ul class="menu__list">
     <li class="menu__item">
@@ -12,7 +14,7 @@
       <a
         data-sort="active"
         href="#"
-        class="menu__item-link">
+        class="menu__item-link ">
         Активные
       </a>
     </li>
@@ -20,7 +22,7 @@
       <a
         data-sort="success"
         href="#"
-        class="menu__item-link">
+        class="menu__item-link ">
         Выполненные
       </a>
     </li>
@@ -28,7 +30,7 @@
       <a
         data-sort="fail"
         href="#"
-        class="menu__item-link">
+        class="menu__item-link ">
         Просроченные
       </a>
     </li>

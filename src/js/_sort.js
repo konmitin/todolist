@@ -39,8 +39,10 @@ async function getTodoList(sort) {
     const backlogCount = document.querySelector(".backlog__check");
 
     if(result.status == 200) {
+      // window.location.reload();
       backlogList.innerHTML = result.list;
       backlogCount.textContent = result.count;
+      addTaskEvent();
     } else {
       alert(result.message);
     }

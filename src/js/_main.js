@@ -1,42 +1,8 @@
 "use strict";
 
 const addToDoForm = document.querySelector("[data-form='addToDo']");
-const deleteTaskBtn = document.querySelectorAll("[data-type='deleteTask']");
 const cancelBtn = document.querySelector("[data-type='cancelBtn']");
 const checkTodo = document.querySelectorAll(".backlog__checkbox");
-
-checkTodo.forEach((elem) => {
-  elem.addEventListener("change", (event) => {
-    let item = event.target;
-
-    while (!item.classList.contains("backlog__item")) {
-      item = item.parentElement;
-    }
-    item.classList.add("_succesful");
-
-    todo(item.getAttribute("data-id"), "succesful");
-  });
-});
-
-// cancelBtn.addEventListener("click", (event) => {
-//   const form = event.target.closest("form");
-//   form.reset();
-// });
-
-// addToDoForm.addEventListener("submit", (event) => {
-//   event.preventDefault();
-
-//   addToDo(event.target);
-// });
-
-deleteTaskBtn.forEach((btn) => {
-  btn.addEventListener("click", (event) => {
-    const task = event.target.closest(".backlog__item");
-    const taskId = task.getAttribute("data-id");
-
-    todo(taskId, "delete");
-  });
-});
 
 function validateForm(form) {
   let error = 0;

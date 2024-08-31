@@ -72,9 +72,9 @@ class Task
         if (!empty($sort)) {
             if ($sort == "active") {
                 $where = "AND status = '0'";
-            } else if($sort == "success") {
+            } else if ($sort == "success") {
                 $where = "AND status = '1'";
-            } else if($sort == "fail") {
+            } else if ($sort == "fail") {
                 $where = "AND status = '2'";
             }
         }
@@ -106,6 +106,10 @@ class Task
     public static function delete(int $id): bool
     {
         global $DB;
+
+        if(empty($id)) {
+            return false;
+        } 
 
         $q = "delete from tasks where id = ?";
         $stmt = $DB->prepare($q);
