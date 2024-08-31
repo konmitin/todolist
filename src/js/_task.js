@@ -20,14 +20,7 @@ function addTaskEvent() {
   }
 
   tasks.forEach((task) => {
-    task.addEventListener("click", (event) => {
-      let target = event.target;
-      if (target.getAttribute("data-type") == "deleteTask") {
-        deleteTask(task.getAttribute("data-id"), task);
-      } else {
-        console.log(target);
-      }
-    });
+    task.addEventListener("click", clickForTaskEvent);
   });
 }
 
@@ -82,6 +75,29 @@ async function deleteTask(id, task) {
   }
 }
 
+async function closeTaskSuccess(id, task) {
+  const successData = {};
+
+  successData.id = id;
+
+  let response = await fetch("controllers/successTask.php", {
+    method: "POST",
+    body: JSON.stringify(successData),
+    headers: { "content-type": "application/json;charset=utf-8" },
+  });
+
+  if (response.ok) {
+    let result = await response.json();
+
+    if (result.status == 200) {
+      task.classList.add("_successful");
+      return result;
+    } else {
+      alert(result.message);
+    }
+  }
+}
+
 function createTodoEvent(event) {
   event.preventDefault();
 
@@ -96,4 +112,13 @@ function createTodoEvent(event) {
   }
 }
 
+function clickForTaskEvent(event) {
+  let target = event.target;
+  let task = event.target.closest(".backlog__item");
+  if (target.getAttribute("data-type") == "deleteTask") {
+    deleteTask(task.getAttribute("data-id"), task);
+  } else if(target.getAttribute("data-type") == "taskSuccess"){
+    closeTaskSuccess(task.getAttribute("data-id"), task);
+  }
+}
 addTaskEvent();

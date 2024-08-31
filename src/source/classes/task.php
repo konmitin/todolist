@@ -92,7 +92,7 @@ class Task
         // $list_todo['length'] = count($list);
         return $list_todo;
     }
-    public static function succesful(int $id): bool
+    public static function success(int $id): bool
     {
         global $DB;
 

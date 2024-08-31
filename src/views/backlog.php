@@ -16,26 +16,32 @@ $backlog = Task::getList($userID, $lastSort);
             <p class="backlog__check title_h3"><?= count($backlog) ?></p>
         </div>
         <div class="backlog__list">
-            <?php foreach($backlog as $todo): ?>
-                <div class="backlog__item <?php if($todo->getStatus() == '1'){echo '_succesful';} else if($todo->getStatus() == '2') { echo '_failed';} ?>"
-                    data-id="<?=$id = $todo->getId()?>"
-                >
-                    <label class="backlog__label">
-                        <input 
-                        type="checkbox" 
-                        class="backlog__checkbox"
-                        <?php if($todo->getStatus()) {
+            <?php foreach ($backlog as $todo): ?>
+                <div
+                    class="backlog__item <?php if ($todo->getStatus() == '1') {
+                                                echo '_successful';
+                                            } else if ($todo->getStatus() == '2') {
+                                                echo '_failed';
+                                            } ?>"
+                    data-id="<?= $id = $todo->getId() ?>">
+                    <label
+                        
+                        class="backlog__label">
+                        <input
+                            data-type="taskSuccess"
+                            type="checkbox"
+                            class="backlog__checkbox"
+                            <?php if ($todo->getStatus()) {
                                 echo "checked";
                             }
-                        ?>
-                        />
+                            ?> />
                         <span class="backlog__psevdo"></span>
                     </label>
                     <div class="backlog__desc-block">
-                        <p class="backlog__description"><?= $name = (string)$todo->getTitle();?></p>
+                        <p class="backlog__description"><?= $name = (string)$todo->getTitle(); ?></p>
                     </div>
                     <div class="backlog__date-box date-box">
-                        <p class="date-box__date"><?= $enddate = $todo->getEndDate();?></p>
+                        <p class="date-box__date"><?= $enddate = $todo->getEndDate(); ?></p>
                     </div>
                     <button class="backlog__delete" type="button" data-type="deleteTask"></button>
                 </div>
@@ -44,6 +50,3 @@ $backlog = Task::getList($userID, $lastSort);
         <button class="backlog__more">...</button>
     </div>
 </div>
-
-
-    

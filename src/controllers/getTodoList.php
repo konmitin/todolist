@@ -40,7 +40,7 @@ foreach($list as $item) {
     $enddate = $item->getEndDate();
     $status = '';
     if($item->getStatus() == 1) {
-        $status = '_succesful';
+        $status = '_successful';
     } else if($item->getStatus() == 2) {
         $status = '_failed';
     }
@@ -50,8 +50,11 @@ foreach($list as $item) {
     $out['list'] .= "<div class='backlog__item $status'
                     data-id='$id'
                 >
-                    <label class='backlog__label'>
+                    <label 
+                        
+                        class='backlog__label'>
                         <input 
+                        data-type='taskSuccess'
                         type='checkbox' 
                         class='backlog__checkbox'
                         $checked
