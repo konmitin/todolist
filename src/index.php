@@ -1,5 +1,6 @@
 <?php 
 
+session_start();
 require($_SERVER['DOCUMENT_ROOT'] . "/bootstrap.php");
 
 ?>
@@ -42,6 +43,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/bootstrap.php");
     </div>
 
     <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/views/components/auth-form.html");?>
+    <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/views/components/creation.php");?>
   </body>
 
   <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/source/scripts.php"); ?>
