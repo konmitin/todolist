@@ -89,8 +89,11 @@ async function closeTaskSuccess(id, task) {
   if (response.ok) {
     let result = await response.json();
 
+    const backlogList = document.querySelector(".backlog__list");
+
     if (result.status == 200) {
       task.classList.add("_successful");
+      window.location.reload();
       return result;
     } else {
       alert(result.message);
