@@ -175,6 +175,7 @@ async function loginUser(form) {
 }
 if (logoutLink) {
   logoutLink.addEventListener("click", (event) => {
+    event.preventDefault();
     logoutUser();
   });
 }

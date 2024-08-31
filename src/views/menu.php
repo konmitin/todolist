@@ -33,6 +33,7 @@
       </a>
     </li>
   </ul>
+  <?php if(!empty($_SESSION['user_id'])) {?>
   <ul class="menu__list">
     <li class="menu__item">
       <button
@@ -42,4 +43,5 @@
       </button>
     </li>
   </ul>
+  <?php }?>
 </div>
