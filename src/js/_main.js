@@ -38,50 +38,6 @@ deleteTaskBtn.forEach((btn) => {
   });
 });
 
-async function addToDo(form) {
-  if (!validateForm(form)) {
-    return;
-  }
-
-  let formData = new FormData(form);
-
-  try {
-    let response = await fetch("controllers/addtodo.php", {
-      method: "POST",
-      body: formData,
-    });
-
-    form.reset();
-    setTimeout(function () {
-      window.location.reload();
-    }, 500);
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-async function addTodo(id, type) {
-  const data = "id=" + id + "&" + type;
-
-  // временно, в дальнейшем необходимо переписать скрипты для отправки на создание
-  let response = await fetch("source/classes.php", {
-    method: "POST",
-    body: data,
-    headers: { "content-type": "application/x-www-form-urlencoded" },
-  });
-
-  let result = await response.json();
-
-  if (!result) {
-    alert(result);
-    return;
-  }
-
-  setTimeout(function () {
-    window.location.reload();
-  }, 500);
-}
-
 function validateForm(form) {
   let error = 0;
 

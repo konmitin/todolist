@@ -1,58 +1,97 @@
 .creation {
+  position: relative;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: rgba($color: #000000, $alpha: 0.7);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
   &__form {
-    display: -webkit-flex;
-    display: -ms-flex;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
   }
   &__label {
+  }
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  &__close {
+    display: flex;
+    cursor: pointer;
+    right: 30%;
+    top: 30%;
+    position: absolute;
+    color: $white;
+    width: 30px;
+    height: 30px;
+    &:before, &:after {
+      cursor: pointer;
+      content: "";
+      top: 50%;
+      width: 100%;
+      height: 100%;
+      background: $white;
+      position: absolute;
+      height: 2px;
+    }
+    &:before {
+      transform: rotate(-45deg);
+    }
+
+    &:after{
+      transform: rotate(45deg);
+
+    }
   }
 }
 .creation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-width: 700px;
+
   &__input-box {
     position: relative;
+    width: 100%;
   }
   &__input {
     border-radius: 5px;
-    padding: 5px 10px;
-    min-width: 300px;
-    text-align: left;
-    background: #fff;
-    border: 1px solid #2f2f2f;
-    border-radius: 5px;
-  }
-  &__input:focus {
-    border: 1px solid #b9cd00;
-  }
-  &__label {
-    display: flex;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
+    padding: 15px 20px;
     width: 100%;
-    height: 100%;
-    z-index: 10;
+    text-align: left;
+    background: $white;
+  }
+  &__title {
+    font-family: $base-ff;
+    font-weight: 300;
+    color: $white;
+    margin-bottom: 10px;
   }
   &__buttons {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 20px;
   }
   &__button {
-    color: #ffffff;
-    font-family: "Montserrat";
+    color: $white;
+    font-family: $base-ff;
     font-weight: 500;
-    padding: 7px 20px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 7px;
+    max-width: 150px;
+    width: 100%;
   }
   &__button-add {
     background: #53c09f;
-    width: 150px;
   }
   &__button-cancel {
     background: #cd2828;
-    width: 100px;
   }
 }
