@@ -20,6 +20,7 @@ $res = User::login($login, $password);
 
 if($res['status'] == 1) {
     $_SESSION['login'] = $login;
+    $_SESSION['user_id'] = $res['user_id'];
     $_SESSION['last_login'] = date('Y-m-d H:s:i');
 }
 

@@ -15,6 +15,8 @@ if(!empty($input->status)) {
     $status = trim(htmlspecialchars($input->status));
 }
 
+unset($_SESSION['user_id']);
 unset($_SESSION['login']);
+unset($_SESSION['last_login']);
 
 echo json_encode($res);

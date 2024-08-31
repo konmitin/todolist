@@ -36,7 +36,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/bootstrap.php");
               <?php include_once("views/menu.php"); ?>
             </div>
             <div class="main__right">
-              <?php include_once("views/backlog.php");?>
+              <?php if(!empty($_SESSION['user_id'])) {include_once("views/backlog.php");}?>
             </div>
           </div>
         </main>

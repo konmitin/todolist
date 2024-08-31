@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-$backlog = Task::getList();
+$userID = $_SESSION['user_id'];
+$backlog = Task::getList($userID);
 
 ?>
 

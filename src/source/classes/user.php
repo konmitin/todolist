@@ -60,9 +60,12 @@ class User {
 
         $userData = $stmt->get_result()->fetch_assoc();
 
-        if(md5(md5($password)) == $userData['password']) {
+        if(!empty($userData) && md5(md5($password)) == $userData['password']) {
+            $id = $userData['id'];
+
             $out['status'] = 1;
             $out['message'] = "Добро пожаловать! Чаю?";
+            $out['user_id'] = $id;
         }
 
         return $out;

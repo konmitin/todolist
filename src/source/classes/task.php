@@ -64,17 +64,17 @@ class Task
 
         return true;
     }
-    public static function getList(): array
+    public static function getList($userID): array
     {
         global $DB;
 
         $list_todo = array();
-        $q = "select * from tasks order by status";
+        $q = "SELECT * FROM tasks WHERE user_id = $userID ORDER BY status";
         $stmt = $DB->query($q);
         $list = $stmt->fetch_all(MYSQLI_ASSOC);
 
         foreach ($list as $todo) {
-            $list_todo[] = new Task($todo['title'], $todo['desc'], $todo['end_date'], $todo['status'], $todo['id']);
+            $list_todo[] = new Task($todo['title'], $todo['desc'], $todo['end_date'], $todo['user_id'], $todo['is_primary'], $todo['status'], $todo['id']);
         }
 
         // $list_todo['length'] = count($list);
