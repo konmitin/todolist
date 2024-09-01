@@ -8,7 +8,7 @@ const bs = require("browser-sync");
 
 module.exports = function rastr() {
   return src("src/assets/img/**/*.+(png|jpg|jpeg|gif|ico)")
-    .pipe(changed("build/img"))
+    .pipe(changed("build/assets/img"))
     .pipe(
       imagemin(
         {
@@ -36,6 +36,6 @@ module.exports = function rastr() {
         ]
       )
     )
-    .pipe(dest("build/img"))
+    .pipe(dest("build/assets/img"))
     .pipe(bs.stream());
 };

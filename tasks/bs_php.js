@@ -4,10 +4,11 @@ module.exports = function bs_php() {
   bs.init({
     browser: ["chrome"],
     watch: true,
-    proxy: "todolist/",
+    proxy: "todolist.ru/",
     logLevel: "info",
     logPrefix: "BS-PHP:",
     logConnections: true,
     logFileChanges: true,
+    https: true
   });
 };

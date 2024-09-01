@@ -5,7 +5,7 @@ module.exports = function bs_html() {
     browser: "chrome",
     logPrefix: "BS-HTML:",
     watch: true,
-    proxy: "konmitin.ru/",
+    proxy: "todolist/",
     logLevel: "info",
     logConnections: true,
     logFileChanges: true,

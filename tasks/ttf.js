@@ -22,6 +22,6 @@ module.exports = function ttf(done) {
 			hasChanged: changed.compareLastModifiedTime
 		}))
 		.pipe(ttf2woff())
-		.pipe(dest('./build/fonts'))
+		.pipe(dest('./build/assets/fonts'))
 	done();
 }

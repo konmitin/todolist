@@ -13,5 +13,5 @@ module.exports = function webp() {
       })
     )
     .pipe(webpConv())
-    .pipe(multiDest(["src/assets/img/webp", "build/img"]));
+    .pipe(multiDest(["src/assets/img/webp", "build/assets/img"]));
 };
