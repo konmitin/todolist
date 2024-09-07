@@ -35,8 +35,8 @@ exports.default = gulp.parallel(
   exports.watch
 );
 
-exports.dev_php = gulp.series(
-  exports.cleanAll,
+exports.dev_php = gulp.parallel(
+  // exports.cleanAll,
   exports.style,
   exports.dev_js,
   exports.rastr,
