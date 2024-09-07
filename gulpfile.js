@@ -35,18 +35,17 @@ exports.default = gulp.parallel(
   exports.watch
 );
 
-exports.dev_php = gulp.parallel(
-  // exports.cleanAll,
+exports.dev_php = gulp.series(
+  exports.cleanAll,
+  exports.php,
+  exports.html,
   exports.style,
   exports.dev_js,
   exports.rastr,
   exports.svg,
   exports.webp,
   exports.ttf,
-  exports.php,
-  exports.html,
-  exports.bs_php,
-  exports.watch
+  gulp.parallel(exports.bs_php, exports.watch)
 );
 
 exports.build = gulp.parallel(
