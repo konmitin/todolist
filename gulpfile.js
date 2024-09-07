@@ -7,6 +7,7 @@ const tasks = requireDir("./tasks");
 // import requireDir from "require-dir";
 // const tasks = requireDir('./tasks');
 
+exports.cleanAll = tasks.cleanAll;
 exports.style = tasks.style;
 exports.build_js = tasks.build_js;
 exports.dev_js = tasks.dev_js;
@@ -34,7 +35,8 @@ exports.default = gulp.parallel(
   exports.watch
 );
 
-exports.dev_php = gulp.parallel(
+exports.dev_php = gulp.series(
+  exports.cleanAll,
   exports.style,
   exports.dev_js,
   exports.rastr,
@@ -42,6 +44,7 @@ exports.dev_php = gulp.parallel(
   exports.webp,
   exports.ttf,
   exports.php,
+  exports.html,
   exports.bs_php,
   exports.watch
 );
