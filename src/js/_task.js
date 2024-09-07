@@ -118,9 +118,9 @@ function createTodoEvent(event) {
 function clickForTaskEvent(event) {
   let target = event.target;
   let task = event.target.closest(".backlog__item");
-  if (target.getAttribute("data-type") == "deleteTask") {
+  if (target.closest(".backlog__btn").getAttribute("data-type") == "deleteTask") {
     deleteTask(task.getAttribute("data-id"), task);
-  } else if(target.getAttribute("data-type") == "taskSuccess"){
+  } else if(target.closest(".backlog__btn").getAttribute("data-type") == "taskSuccess"){
     closeTaskSuccess(task.getAttribute("data-id"), task);
   }
 }

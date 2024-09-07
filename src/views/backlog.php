@@ -24,26 +24,25 @@ $backlog = Task::getList($userID, $lastSort);
                                                 echo '_failed';
                                             } ?>"
                     data-id="<?= $id = $todo->getId() ?>">
-                    <label
-                        
-                        class="backlog__label">
-                        <input
-                            data-type="taskSuccess"
-                            type="checkbox"
-                            class="backlog__checkbox"
-                            <?php if ($todo->getStatus()) {
-                                echo "checked";
-                            }
-                            ?> />
-                        <span class="backlog__psevdo"></span>
-                    </label>
+
                     <div class="backlog__desc-block">
                         <p class="backlog__description"><?= $name = (string)$todo->getTitle(); ?></p>
                     </div>
                     <div class="backlog__date-box date-box">
                         <p class="date-box__date"><?= $enddate = $todo->getEndDate(); ?></p>
                     </div>
-                    <button class="backlog__delete" type="button" data-type="deleteTask"></button>
+                    <div class="backlog__right backlog__btns">
+                        <?php if (!$todo->getStatus()) { ?>
+                            <button class="backlog__success backlog__btn" data-type="taskSuccess">
+
+                                <img class="backlog__delete_img" src="/assets/img/check-task-green.svg" alt="">
+                            </button>
+                        <?php } ?>
+                        <button class="backlog__delete backlog__btn" type="button" data-type="deleteTask">
+                            <img class="backlog__delete_img" src="/assets/img/trash-task-red.svg" alt="">
+                        </button>
+                    </div>
+
                 </div>
             <?php endforeach; ?>
         </div>
