@@ -1,10 +1,33 @@
 <?php
 session_start();
+$_SESSION['tasks_list'] = array();
 
 $userID = $_SESSION['user_id'];
 // $lastSort = $_SESSION['last_sort'];
 $lastSort = "";
 $backlog = Task::getList($userID, $lastSort);
+
+$countTask = count($backlog);
+$count = 0;
+
+foreach($backlog as $key => $tasks) {
+    $taskID = $tasks->getId();
+
+    
+    
+    if($count == 0) {
+        $_SESSION['tasks_list'][$count] = $taskID;
+        $count = $countTask - ($countTask - 1);
+        
+        
+        continue;
+    }
+    
+    $_SESSION['tasks_list'][$count] = $taskID;
+    $count = $countTask - ($countTask - $count);
+
+    
+}
 
 ?>
 

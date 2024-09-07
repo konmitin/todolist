@@ -49,10 +49,10 @@ async function addTodo(title, enddate) {
   }
 }
 
-async function deleteTask(id, task) {
+async function deleteTask(index, task) {
   const deleteData = {};
 
-  deleteData.id = id;
+  deleteData.index = index;
 
   let response = await fetch("controllers/deleteTask.php", {
     method: "POST",
@@ -68,7 +68,7 @@ async function deleteTask(id, task) {
     if (result.status == 200) {
       backlogCount.textContent = backlogCount.textContent - 1;
       task.remove();
-      return result;
+      // alert(result.message);
     } else {
       alert(result.message);
     }
@@ -118,8 +118,10 @@ function createTodoEvent(event) {
 function clickForTaskEvent(event) {
   let target = event.target;
   let task = event.target.closest(".backlog__item");
+  let index = task ? [...task.parentNode.children].indexOf(task) : -1;
+
   if (target.closest(".backlog__btn").getAttribute("data-type") == "deleteTask") {
-    deleteTask(task.getAttribute("data-id"), task);
+    deleteTask(index, task);
   } else if(target.closest(".backlog__btn").getAttribute("data-type") == "taskSuccess"){
     closeTaskSuccess(task.getAttribute("data-id"), task);
   }

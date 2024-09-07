@@ -33,24 +33,38 @@ if (!empty($list)) {
     $out['count'] = count($list);
 }
 
+$countTask = count($list);
+$count = 0;
+
 foreach ($list as $item) {
 
     $title = $item->getTitle();
     $id = $item->getId();
     $enddate = $item->getEndDate();
     $status = '';
+
+    // === Заполнение списка задач ===
+    if ($count == 0) {
+        $_SESSION['tasks_list'][$count] = $id;
+        $count = $countTask - ($countTask - 1);
+    } else {
+        $_SESSION['tasks_list'][$count] = $id;
+        $count = $countTask - ($countTask - $count);
+    }    
+    // ===
+
     if ($item->getStatus() == 1) {
         $status = '_successful';
     } else if ($item->getStatus() == 2) {
         $status = '_failed';
     }
+    
 
     $checked = $item->getStatus() ? 'checked' : '';
 
     $checkBtn = "<button class='backlog__success backlog__btn' data-type='taskSuccess'>
                     <img class='backlog__delete_img' src='/assets/img/check-task-green.svg' alt=''>
                 </button>";
-
     $checkBtn = !$item->getStatus() ? $checkBtn : '';
 
     $out['list'] .= "<div class='backlog__item $status'
