@@ -221,3 +221,58 @@ authFormFields.forEach((field) => {
     label.classList.add("active");
   });
 });
+
+// === Разделы в userpopup === //
+
+const userInfo = document.querySelector(".user-info");
+const toUserInfo = document.querySelector("[data-type='userinfo']");
+const userInfoTabLink = userInfo.querySelectorAll(".user-info__tab-link");
+
+toUserInfo.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  userInfo.classList.add("active");
+});
+
+userInfo.addEventListener("click", (event) => {
+  if (!event.target.closest(".user-info__container") || event.target.closest(".user-info__close")) {
+    userInfo.classList.remove("active");
+  }
+});
+
+userInfoTabLink.forEach((tab) => {
+  tab.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    let target = event.target;
+    let href = target.getAttribute("href");
+
+    const activeTab = userInfo.querySelector(".user-info__tab-link.active");
+    const content = userInfo.querySelector(".user-info__content-list");
+
+    if (activeTab) {
+      activeTab.classList.remove("active");
+    }
+
+    target.classList.add("active");
+
+    console.log(href);
+
+    const targetContent = content.querySelector(href);
+    const activeContent = content.querySelector(".active");
+
+    if (targetContent) {
+      targetContent.classList.add("active");
+    }
+
+    if (activeContent) {
+       
+      let activeHref = "#" + activeContent.getAttribute("id");
+      console.log(activeHref);
+
+      if (href != activeHref) {
+        activeContent.classList.remove("active");
+      }
+    }
+  });
+});

@@ -19,7 +19,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/bootstrap.php");
           </div>
           <div class="header__auth-block">
             <?php if($_SESSION['login']) { ?>
-              <a href="#" class="header__auth"><?= $_SESSION['login'] ?></a>
+              <a href="#userinfo" class="header__auth" data-type="userinfo"><?= $_SESSION['login'] ?></a>
               <a href="#" class="header__auth" data-type="logout">Выход</a>
             <?php } else { ?>
               <a href="#" class="header__auth" data-type="login">Вход</a>
@@ -44,6 +44,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/bootstrap.php");
 
     <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/views/components/auth-form.html");?>
     <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/views/components/creation.php");?>
+    <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/views/userpopup.php");?>
   </body>
 
   <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/source/scripts.php"); ?>

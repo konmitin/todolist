@@ -3,11 +3,19 @@
 class User {
     protected $id = "";
     protected $name = "";
+    protected $registerDate = "";
+
+    // === в разработке (не уверен, что буду добавлять эти поля)
+    protected $avatar = "";
     protected $login = "";
     protected $password = "";
+    // ===
 
-    public function __construct() {
+    public function __construct($id, $name, $registerDate) {
 
+        $this->id = $id;
+        $this->name = $name;
+        $this->registerDate = $registerDate;
     }
 
     public static function register($name, $login, $password) {
@@ -69,5 +77,68 @@ class User {
         }
 
         return $out;
+    }
+
+    public static function getById($userId) {
+        global $DB;
+
+        $userData_q = "SELECT * FROM `users` WHERE `users`.`id` = ?";
+        
+        $stmt = $DB->prepare($userData_q);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+
+        $userData = $stmt->get_result()->fetch_assoc();
+
+        return new User($userData['id'], $userData['name'], $userData['register_date']);
+    }
+
+    public static function getFriends($userID) {
+        global $DB;
+
+        $return = array();
+
+        if(empty($userID)) {
+          return false;
+        }
+
+        $query = "SELECT users_user.friend_id FROM users 
+                  LEFT JOIN users_user ON users_user.user_id = users.id
+                  WHERE users.id = $userID";
+
+        $stmt = $DB->prepare($query);
+        $stmt->execute();
+        $response = $stmt->get_result();
+
+        
+
+        while($friend = $response->fetch_assoc()) {
+
+          $friendID = $friend["friend_id"];
+          $frinedInfoQuery = "SELECT * FROM users WHERE id = $friendID"; 
+
+          $stmtFriend = $DB->prepare($frinedInfoQuery);
+          $stmtFriend->execute();
+          $friendRes = $stmtFriend->get_result()->fetch_assoc();
+
+          $return[] = $friendRes;
+        }
+        
+
+        return $return;
+    }
+
+    #GET porperty
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getRegisterDate() {
+        return $this->registerDate;
     }
 }
