@@ -14,21 +14,23 @@
   }
   &__item-link {
     display: flex;
-    padding: 0px 10px;
+    padding: 0px 11px;
     width: 100%;
     color: $white;
     font-family: $base-ff;
     font-size: 18px;
-    transition: all 0.3s;
+    transition: color 0.3s;
   }
 
   &__item-link._active {
     color: $hover;
+    padding: 0px 10px;
     border-left: 1px solid $hover;
   }
 
   &__item-link:hover {
     color: $hover;
+    padding: 0px 10px;
     border-left: 1px solid $hover;
   }
 }
