@@ -1,0 +1,145 @@
+.task {
+  width: 100%;
+  height: 80vh;
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  &__info-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $base-c;
+    padding: 10px 0;
+  }
+  &__title {
+    font-family: $base-ff;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  &__stages {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 2px;
+  }
+  &__stage {
+    display: flex;
+    border: 1px solid $base-c;
+    padding: 10px 15px;
+    font-weight: 300;
+    font-family: $base-ff;
+    font-size: 18px;
+    transition: all 0.3s;
+    &:hover {
+      color: $white;
+      border-color: $success;
+      background: $success;
+    }
+    &.active {
+      color: $white;
+      border-color: $success;
+      background: $success;
+    }
+    &.fail {
+      color: $white;
+      border-color: $fail;
+      background: $fail;
+    }
+    &:hover.fail {
+      color: $white;
+      border-color: $fail;
+      background: $fail;
+    }
+    &_left {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    &_right {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &__btn {
+    max-height: 24px;
+    overflow: hidden;
+    & img {
+      max-height: inherit;
+    }
+  }
+  &__info-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px 0;
+  }
+  &__info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  &__info-item-title {
+    font-family: $base-ff;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  &__info-item-main {
+    display: flex;
+    align-items: center;
+  }
+  &__info-item-text {
+    font-family: $base-ff;
+    margin-left: 5px;
+  }
+  &__desc {
+    height: 100%;
+  }
+  &__desc-main {
+    height: 100%;
+  }
+  &__desc-text {
+    width: 100%;
+    height: 100%;
+    // resize: vertical;
+  }
+  &__edit-btns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__edit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $base-ff;
+    font-size: 16px;
+    padding: 15px 20px;
+    color: $white;
+    opacity: 0;
+    visibility: hidden;
+    &_save {
+        background: $success;
+    }
+    &_cancel {
+        background: $fail;
+    }
+  }
+}

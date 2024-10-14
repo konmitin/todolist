@@ -1,42 +1,15 @@
 {
-  "name": "todolist",
-  "version": "1.0.0",
-  "main": "index.pug",
-  "scripts": {
-    "build": "gulp build",
-    "dev_php": "gulp dev_php"
-  },
-  "author": "KMShadow",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/preset-env": "^7.23.9",
-    "browser-sync": "^2.27.10",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^8.0.0",
-    "gulp-babel": "^8.0.0",
-    "gulp-changed": "^4.0.3",
-    "gulp-clean": "^0.4.0",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-file-include": "^2.3.0",
-    "gulp-imagemin": "^6.2.0",
-    "gulp-multi-dest": "^1.3.7",
-    "gulp-plumber": "^1.2.1",
-    "gulp-sass": "^5.1.0",
-    "gulp-sass-bulk-importer": "^3.0.2",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-ttf2woff": "^1.1.1",
-    "gulp-ttftowoff2": "^1.0.1",
-    "gulp-uglify-es": "^3.0.0",
-    "gulp-webp": "^4.0.1",
-    "imagemin-jpeg-recompress": "^7.0.0",
-    "imagemin-pngquant": "^9.0.2",
-    "require-dir": "^1.2.0",
-    "sass": "^1.55.0"
-  },
-  "dependencies": {
-    "@prettier/plugin-php": "^0.22.2",
-    "prettier": "^3.2.5"
-  },
-  "description": ""
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "axios": "^1.1.2",
+        "laravel-vite-plugin": "^0.7.2",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "sass": "^1.79.4",
+        "vite": "^4.0.0"
+    }
 }

@@ -1,1 +1,0 @@
-<script src=<?= DOMAIN . "/js/main.min.js"?>></script>
