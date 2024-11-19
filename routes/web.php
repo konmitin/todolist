@@ -82,7 +82,7 @@ Route::get("/task/{id}", function (string $id) {
 
         $isActive = false;
 
-        $task = Task::find($id)->first();
+        $task = Task::where('id', (int)$id)->first();
 
         // Предусмотреть переход на задачу, которая была удалена (возможно не удалять задачи, а помечать удаленными)
 

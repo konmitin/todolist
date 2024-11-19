@@ -92,7 +92,7 @@
                                 <span class="task__info-item-text">
                                     @if (!$task->assignedBy())
                                         ---
-                                    @elseif ($task->assignedBy() == $currentUserId)
+                                    @elseif ($task->assignedBy()->first()->id == $currentUserId)
                                         ВЫ
                                     @else
                                         {{ strtoupper($task->user()->first()->name) }}
