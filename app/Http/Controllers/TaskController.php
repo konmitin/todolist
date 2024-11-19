@@ -20,11 +20,16 @@ class TaskController extends Controller
                 'enddate' => ['required', 'date']
             ]);
 
+            if(empty($assignedId)) {
+                $assignedId = $userId;
+            }
+
             $task = Task::create([
                 "title" => $data['title'],
                 "description" => $data['description'],
                 "end_date" => $data['enddate'],
-                "user_id" => $userId,
+                "created_by" => $userId,
+                "assigned_by" => $assignedId,
                 "step_id" => "dt_open",
                 "status" => "open",
             ]);
@@ -43,14 +48,14 @@ class TaskController extends Controller
             try {
                 $tasks = session()->get('tasks');
                 $id = $tasks[$position];
-    
+
                 $userId = auth()->user()->id;
-    
+
                 $task = new Task;
-                $res = $task->where('id', '=', $id)
-                    ->where('user_id', '=', $userId)
+                $res = $task->where('id', $id)
+                    ->where('created_by', $userId)
                     ->delete();
-    
+
                 if ($res) {
                     return response(["message" => "Задача успешно удалена"], 200);
                 } else {
@@ -59,7 +64,6 @@ class TaskController extends Controller
             } catch (\ErrorException $e) {
                 return response(["message" => "Произошла непредвиденная ошибка"], 500);
             }
-            
         } else {
             return response(["message" => "Пользователь не авторизован"], 422);
         }
@@ -72,14 +76,14 @@ class TaskController extends Controller
             try {
                 $tasks = session()->get('tasks');
                 $id = $tasks[$position];
-    
+
                 $userId = auth()->user()->id;
-    
+
                 $task = new Task;
-                $res = $task->where('id', '=', $id)
-                    ->where('user_id', '=', $userId)
+                $res = $task->where('id', $id)
+                    ->where('created_by', $userId)
                     ->update(['status' => 'success', "step_id" => "dt_success"]);
-    
+
                 if ($res) {
                     return response(["message" => "Задача завершена!"], 200);
                 } else {
@@ -88,7 +92,6 @@ class TaskController extends Controller
             } catch (\ErrorException $e) {
                 return response(["message" => $e->getMessage()], 500);
             }
-            
         } else {
             return response(["message" => "Пользователь не авторизован"], 422);
         }

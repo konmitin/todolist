@@ -13,7 +13,9 @@ class Task extends Model
     protected $fillable = [
         'title',
         'description',
-        'user_id',
+        'assigned_by',
+        'created_by',
+        'closed_by',
         'step_id',
         'end_date',
         'status'
@@ -23,7 +25,19 @@ class Task extends Model
         'end_date'
     ];
 
-    public function user() : BelongsTo {
-        return $this->belongsTo(User::class);
+    protected $attributes = [];
+
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, "created_by");
+    }
+
+    public function assignedBy()
+    {
+        $assignedBy = $this->belongsTo(User::class, "assigned_by")->first();
+
+        $assignedBy = $assignedBy ? $assignedBy : null;
+
+        return  $assignedBy;
     }
 }

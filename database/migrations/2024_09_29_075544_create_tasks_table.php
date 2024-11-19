@@ -17,17 +17,25 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("created_by");
+
+            $table->unsignedBigInteger("assigned_by")->nullable();
+            $table->unsignedBigInteger("closed_by")->nullable();
+
+            $table->dateTime("closed_at")->nullable();
+
             $table->string("step_id", 255);
            
             $table->string("status", 50);
 
             $table->string("title", 100);
-            $table->text("description");
-            $table->date('end_date');
+            $table->text("description")->nullable();
+            $table->date('end_date')->nullable();
 
             $table->foreign('step_id')->references('id_all')->on('steps');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('assigned_by')->references('id')->on('users');
+            $table->foreign('closed_by')->references('id')->on('users');
         });
     }
 
