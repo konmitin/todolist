@@ -58,6 +58,7 @@ Route::get('/tasks/sort/{sort}', function (string $sort) {
 
         ###
         $tasks = [];
+
         foreach ($list as $task) {
             $tasks[] = $task['id'];
         }

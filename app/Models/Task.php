@@ -22,7 +22,8 @@ class Task extends Model
     ];
 
     protected $dates = [
-        'end_date'
+        'end_date',
+        'closed_at'
     ];
 
     protected $attributes = [];

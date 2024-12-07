@@ -71,7 +71,8 @@
                             <h6 class="task__info-item-title">Закрыта</h6>
                             <div class="task__info-item-main">
                                 <span
-                                    class="task__info-item-text">{{ $task->closed_at ? $task->closed_at->format('d.m.Y') : '---' }}</span>
+                                    class="task__info-item-text">{{ $task->closed_at ? $task->closed_at->format('d.m.Y') : '---' }}
+                                </span>
                             </div>
                         </li>
                         <li class="task__info-item" data-fid="created_by">

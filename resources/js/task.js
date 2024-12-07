@@ -113,7 +113,6 @@ async function closeTaskSuccess(postition, task) {
     task.classList.add("_successful");
 
     getSortList("all");
-
   } else {
     alert(result.message);
   }
@@ -177,7 +176,7 @@ async function getSortList(sort) {
 
     result.list.forEach((item) => {
       let classElem = "";
-      let btnSuccess =  `<button class="backlog__success backlog__btn" data-type="taskSuccess">
+      let btnSuccess = `<button class="backlog__success backlog__btn" data-type="taskSuccess">
                             <img class="backlog__delete_img" src="/storage/img/check-task-green.svg" alt="">
                         </button>`;
 
@@ -186,10 +185,11 @@ async function getSortList(sort) {
         btnSuccess = "";
       } else if (item.status == "fail") {
         classElem = "_fail";
-      } else if (item.status == "check"){
+      } else if (item.status == "check") {
         classElem = "_check";
-        
       }
+
+      let itemDate = new Date(item.end_date);
 
       let elem = `<a href="/task/${item.id}" class= 'backlog__item ${classElem}' data-id="${item.id}">
 
@@ -197,7 +197,7 @@ async function getSortList(sort) {
                       <p class="backlog__description">${item.title}</p>
                   </div>
                   <div class="backlog__date-box date-box">
-                      <p class="date-box__date">${item.end_date}</p>
+                      <p class="date-box__date">${itemDate.toLocaleDateString()}</p>
                   </div>
                   <div class="backlog__right backlog__btns">
                       ${btnSuccess}

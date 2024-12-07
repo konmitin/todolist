@@ -22,7 +22,7 @@
             <p class="backlog__description">{{ $name }}</p>
         </div>
         <div class="backlog__date-box date-box">
-            <p class="date-box__date">{{ $enddate }}</p>
+            <p class="date-box__date">{{ $enddate->format('d.m.Y') }}</p>
         </div>
     </a>
 
