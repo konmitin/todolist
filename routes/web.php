@@ -26,7 +26,7 @@ Route::get('/', function () {
 
     if (auth()->check()) {
         $userId = auth()->user()['id'];
-        $backlog = Task::whereOr(['created_by'=> $userId, 'assigned_by' => $userId])->get();
+        $backlog = Task::orWhere(['created_by'=> $userId, 'assigned_by' => $userId])->get();
         $countTasks = count($backlog);
 
         ###
@@ -51,9 +51,9 @@ Route::get('/tasks/sort/{sort}', function (string $sort) {
         $userId = auth()->user()['id'];
 
         if ($sort == "all") {
-            $list = Task::whereOr(['created_by'=> $userId, 'assigned_by' => $userId])->get();
+            $list = Task::orWhere(['created_by'=> $userId, 'assigned_by' => $userId])->get();
         } else {
-            $list = Task::whereOr(['created_by'=> $userId, 'assigned_by' => $userId])->where('status', $sort)->get();
+            $list = Task::orWhere(['created_by'=> $userId, 'assigned_by' => $userId])->where('status', $sort)->get();
         }
 
         ###
@@ -87,8 +87,8 @@ Route::get("/task/{id}", function (string $id) {
         // Предусмотреть переход на задачу, которая была удалена (возможно не удалять задачи, а помечать удаленными)
 
         if($userId != $task->created_by && $userId != $task->assigned_by) {
-            $isAccess = false;
-            return redirect("/");
+            $isAccess = true;
+            // return redirect("/");
         } else {
             $isAccess = true;
         }

@@ -20,9 +20,7 @@ class TaskController extends Controller
                 'enddate' => ['required', 'date']
             ]);
 
-            if(empty($assignedId)) {
-                $assignedId = $userId;
-            }
+            $assignedId = $userId;
 
             $task = Task::create([
                 "title" => $data['title'],
@@ -68,7 +66,6 @@ class TaskController extends Controller
             return response(["message" => "Пользователь не авторизован"], 422);
         }
     }
-
     public function success(Request $request, string $position)
     {
         if (auth()->check()) {

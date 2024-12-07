@@ -34,7 +34,7 @@ class Task extends Model
 
     public function assignedBy()
     {
-        $assignedBy = $this->belongsTo(User::class, "assigned_by")->first();
+        $assignedBy = $this->belongsTo(User::class, "assigned_by")->get();
 
         $assignedBy = $assignedBy ? $assignedBy : null;
 

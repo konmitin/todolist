@@ -18,7 +18,7 @@
                                     $left = $step->position == 1 ? true : false;
 
                                     $currentStep = $task->step_id;
-                                    $isFail = $currentStep == 'dt_failed' ? true : false;
+                                    $isFail = $currentStep == 'dt_fail' ? true : false;
 
                                     if (!$isActive) {
                                         $isActive = $step->id_all == $currentStep ? true : false;
@@ -26,7 +26,7 @@
                                         if (!$isActive && $i > 2) {
                                             continue;
                                         }
-                                    } elseif ($currentStep == 'dt_failed' && $step->id_all == 'dt_success') {
+                                    } elseif ($currentStep == 'dt_fail' && $step->id_all == 'dt_success') {
                                         continue;
                                     }
 
@@ -93,9 +93,9 @@
                                     @if (!$task->assignedBy())
                                         ---
                                     @elseif ($task->assignedBy()->first()->id == $currentUserId)
-                                        ВЫ
+                                        ВЫ 
                                     @else
-                                        {{ strtoupper($task->user()->first()->name) }}
+                                        {{ strtoupper($task->assignedBy()->first()->name) }}
                                     @endif
                                 </span>
                             </div>
@@ -112,7 +112,7 @@
                         <li class="task__info-item" data-fid="github_link">
                             <h6 class="task__info-item-title">github link</h6>
                             <div class="task__info-item-main">
-                                <img src="'task/img/world.svg'" alt="">
+                                <img src="/storage/img/world.svg" alt="">
                                 <a href="https://github.com/konmitin/todolist" class="task__info-item-text"
                                     target="_blank">В разработке</a>
                             </div>
